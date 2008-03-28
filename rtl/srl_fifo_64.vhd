@@ -67,12 +67,11 @@
 --
 --    Well done Xilinx..
 --
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use ieee.NUMERIC_STD.all;
 
-entity srl_fifo_16 is
+entity srl_fifo_64 is
     generic ( width : integer := 8 ); -- set to how wide fifo is to be
     port( 
         data_in      : in     std_logic_vector (width -1 downto 0);
@@ -88,24 +87,24 @@ entity srl_fifo_16 is
 
 -- Declarations
 
-end srl_fifo_16 ;
+end srl_fifo_64 ;
 --
 ------------------------------------------------------------------------------------
 --
-architecture rtl of srl_fifo_16 is
---
-------------------------------------------------------------------------------------
---
-
-
-
-------------------------------------------------------------------------------------
+architecture rtl of srl_fifo_64 is
 --
 ------------------------------------------------------------------------------------
 --
 
-constant srl_length  : integer := 16;    -- set to srl 'type' 16 or 32 bit length
-constant pointer_vec : integer := 4;    -- set to number of bits needed to store pointer = log2(srl_length)
+
+
+------------------------------------------------------------------------------------
+--
+------------------------------------------------------------------------------------
+--
+
+constant srl_length  : integer := 64;  -- set to 16, 32, 64 etc. 
+constant pointer_vec : integer := 6;    -- set to number of bits needed to store pointer = log2(srl_length)
 
 type	srl_array	is array ( srl_length - 1  downto 0 ) of STD_LOGIC_VECTOR ( WIDTH - 1 downto 0 );
 signal	fifo_store		: srl_array;
